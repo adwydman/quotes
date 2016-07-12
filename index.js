@@ -18,7 +18,14 @@ app.post('/name', function(req, res) {
     const name = JSON.stringify(req.body);
     fs.writeFile('./data/name.json', name, 'utf8', (err, data) => {
         if (err) throw err;
-        res.status(201).send({status: "Added"});
+        res.status(201).send({status: "Added name"});
+    });
+});
+
+app.post('/reset', function(req, res) {
+    fs.writeFile('./data/name.json', '{"name": ""}', 'utf8', (err, data) => {
+        if (err) throw err;
+        res.status(201).send({status: "Reset"});
     });
 });
 
