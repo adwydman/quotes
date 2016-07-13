@@ -1,4 +1,5 @@
 const fs = require('fs');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -6,6 +7,7 @@ const bodyParser = require('body-parser');
 const quotes = require('./data/quotes.js');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function (req, res) {
     fs.readFile('./data/name.json', 'utf8', (err, data) => {
